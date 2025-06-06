@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniLearn</title>
+    <title>OmniLearn – Ready to Change the World 🚀</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>OmniLearn – Ready to Change the World 🚀</h1>
-         <nav>
-            <a href="#">Home</a>
-            <a href="#">Subjects</a>
-            <a href="#">AI Tutor</a>
-            <a href="#">Dashboard</a>
-        </nav>
-    </header>
-    <main>
-        <section id="ai-box">
-            <h2>Start Learning with AI</h2>
-            <input type="text" placeholder="Ask a question..." id="userInput">
-            <button onclick="getResponse()">Submit</button>
-            <div id="responseBox"></div>
-        </section>
-    </main>
+    <h1>OmniLearn – Ready to Change the World 🚀</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Subjects</a>
+        <a href="#">AI Tutor</a>
+        <a href="#">Dashboard</a>
+    </nav>
+    <section>
+        <input type="text" placeholder="Ask a question..." />
+        <button onclick="askAI()">Submit</button>
+        <div id="response">Thinking... (AI response will go here)</div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
