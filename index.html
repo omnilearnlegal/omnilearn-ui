@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>OmniLearn</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniLearn</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to OmniLearn</h1>
-  <script src="script.js"></script>
+    <header>
+        <h1>Welcome to OmniLearn</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Subjects</a>
+            <a href="#">AI Tutor</a>
+            <a href="#">Dashboard</a>
+        </nav>
+    </header>
+    <main>
+        <section id="ai-box">
+            <h2>Start Learning with AI</h2>
+            <input type="text" placeholder="Ask a question..." id="userInput">
+            <button onclick="getResponse()">Submit</button>
+            <div id="responseBox"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
