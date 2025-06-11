@@ -1,0 +1,1 @@
+export default function QuizUI() { return <div>Quiz Coming Soon</div>; }
