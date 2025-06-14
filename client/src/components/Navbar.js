@@ -9,6 +9,7 @@ export default function Navbar() {
         <li><Link to="/study">Study</Link></li>
         <li><Link to="/tutor">Tutor</Link></li>
         <li><Link to="/payments">Payments</Link></li>
+        <li><Link to="/checkout">Checkout</Link></li>
       </ul>
     </nav>
   );
