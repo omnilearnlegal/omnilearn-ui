@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OmniLearn</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<script>
+  const basicAuth = () => {
+    const auth = window.btoa("omnilearn:secret123");
+    const headers = new Headers();
+    headers.append("Authorization", "Basic " + auth);
+
+    fetch(window.location.href, { method: "GET", headers })
+      .then(res => {
+        if (res.status === 401) {
+          const entered = prompt("Enter password:");
+          if (entered !== "secret123") {
+            alert("Access Denied");
+            window.location.href = "https://google.com";
+          }
+        }
+      })
+      .catch(() => {});
+  };
+
+  basicAuth();
+</script>
 
