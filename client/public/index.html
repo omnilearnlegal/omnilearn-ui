@@ -2,8 +2,8 @@
   function checkPassword() {
     const input = document.getElementById('passwordInput').value;
     if (input === 'secret123') {
-      // Send the user to the React app
-      window.location.href = '/app';
+      // Send the user to the React app's root
+      window.location.href = '/';
     } else {
       document.getElementById('message').innerText = '❌ OmniLearn does not recognize the password';
     }
