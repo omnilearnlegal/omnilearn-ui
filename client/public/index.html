@@ -1,47 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>🔒 OmniLearn Private</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        background: black;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: sans-serif;
-        text-align: center;
-      }
-      input, button {
-        padding: 10px;
-        margin-top: 15px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>🔒 Private Access Only</h1>
-    <p>Enter password.</p>
-    <input type="password" id="passwordInput" placeholder="Password" />
-    <button onclick="checkPassword()">Enter</button>
-    <p id="message" style="color:red; margin-top:10px;"></p>
-
-    <script>
-      function checkPassword() {
-        const input = document.getElementById('passwordInput').value;
-        if (input === 'secret123') {
-          window.location.href = '/index.react.html';
-        } else {
-          document.getElementById('message').innerText = '❌ OmniLearn does not recognize the password';
-        }
-      }
-    </script>
-  </body>
-</html>
+<script>
+  function checkPassword() {
+    const input = document.getElementById('passwordInput').value;
+    if (input === 'secret123') {
+      // Send the user to the React app
+      window.location.href = '/app';
+    } else {
+      document.getElementById('message').innerText = '❌ OmniLearn does not recognize the password';
+    }
+  }
+</script>
 
