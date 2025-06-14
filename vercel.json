@@ -1,17 +1,15 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
           "key": "WWW-Authenticate",
-          "value": "Basic realm='OmniLearn Private'"
+          "value": "Basic realm=\"OmniLearn Private\""
         }
       ]
     }
