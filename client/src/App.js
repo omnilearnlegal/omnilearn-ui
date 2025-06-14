@@ -1,12 +1,31 @@
-// Trigger deploy to apply vercel.json headers
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Payments from './components/Payments';
+
+function Home() {
+  return <h2>🏠 Welcome to OmniLearn</h2>;
+}
+function Study() {
+  return <h2>📚 Study Module (Coming Soon)</h2>;
+}
+function Tutor() {
+  return <h2>💡 AI Tutor (Coming Soon)</h2>;
+}
 
 function App() {
   return (
-    <div style={{ textAlign: 'center', padding: '3rem', fontSize: '2rem', color: '#333' }}>
-      <p>✅ <strong>OmniLearn is Really Live!</strong></p>
-      <p>If you see this message, your frontend is 100% working.</p>
-    </div>
+    <Router>
+      <Navbar />
+      <div style={{ padding: '2rem' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/study" element={<Study />} />
+          <Route path="/tutor" element={<Tutor />} />
+          <Route path="/payments" element={<Payments />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
