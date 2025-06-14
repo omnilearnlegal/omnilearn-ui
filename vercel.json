@@ -1,15 +1,21 @@
 {
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "no-store"
+          "key": "WWW-Authenticate",
+          "value": "Basic realm='OmniLearn Private'"
         },
         {
-          "key": "WWW-Authenticate",
-          "value": "Basic realm=\"OmniLearn Private\""
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }
