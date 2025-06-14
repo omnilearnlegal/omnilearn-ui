@@ -1,3 +1,4 @@
+// Trigger deploy to apply vercel.json headers
 import React from 'react';
 
 function App() {
