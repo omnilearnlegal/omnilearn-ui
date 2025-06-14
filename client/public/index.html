@@ -1,22 +1,41 @@
-<script>
-  const basicAuth = () => {
-    const auth = window.btoa("omnilearn:secret123");
-    const headers = new Headers();
-    headers.append("Authorization", "Basic " + auth);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OmniLearn Access</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #000;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🔒 Private Access Only</h2>
+    <input id="pw" type="password" placeholder="Enter password" />
+    <button onclick="check()">Enter</button>
 
-    fetch(window.location.href, { method: "GET", headers })
-      .then(res => {
-        if (res.status === 401) {
-          const entered = prompt("Enter password:");
-          if (entered !== "secret123") {
-            alert("Access Denied");
-            window.location.href = "https://google.com";
-          }
+    <script>
+      function check() {
+        const pw = document.getElementById("pw").value;
+        if (pw === "secret123") {
+          window.location.href = "/index.react.html";
+        } else {
+          alert("Incorrect password");
         }
-      })
-      .catch(() => {});
-  };
-
-  basicAuth();
-</script>
+      }
+    </script>
+  </body>
+</html>
 
