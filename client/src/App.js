@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Payments from './components/Payments';
+import Progress from './components/Progress';
 
 function Home() {
   return <h2>🏠 Welcome to OmniLearn</h2>;
@@ -17,14 +18,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <div style={{ padding: '2rem' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/study" element={<Study />} />
-          <Route path="/tutor" element={<Tutor />} />
-          <Route path="/payments" element={<Payments />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/study" element={<Study />} />
+        <Route path="/tutor" element={<Tutor />} />
+        <Route path="/payments" element={<Payments />} />
+        <Route path="/progress" element={<Progress />} />
+      </Routes>
     </Router>
   );
 }
