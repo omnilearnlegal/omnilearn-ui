@@ -1,47 +1,53 @@
 import React, { useState } from 'react';
 
 export default function Tutor() {
-  const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
-    { sender: 'ai', text: 'Hi! I’m your AI Tutor. Ask me anything to begin.' }
+    { sender: 'ai', text: 'Hello! I’m your AI Tutor. What would you like to learn today?' },
   ]);
+  const [input, setInput] = useState('');
 
-  const handleSend = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!input.trim()) return;
-    
-    setMessages(prev => [...prev, { sender: 'user', text: input }]);
 
-    // Fake AI response for now
-    setTimeout(() => {
-      setMessages(prev => [
-        ...prev,
-        { sender: 'ai', text: `I'm working on it! (You asked: "${input}")` }
-      ]);
-    }, 600);
+    const userMessage = { sender: 'user', text: input };
+    const aiResponse = { sender: 'ai', text: simulateAIResponse(input) };
 
+    setMessages([...messages, userMessage, aiResponse]);
     setInput('');
+  };
+
+  const simulateAIResponse = (text) => {
+    // Simulated AI response
+    if (text.toLowerCase().includes('photosynthesis')) {
+      return "Photosynthesis is the process by which plants convert sunlight into energy. 🌱";
+    } else if (text.toLowerCase().includes('help')) {
+      return "Sure! Ask me anything about math, science, history, or test prep.";
+    } else {
+      return `Interesting! Let me explain: "${text}" is a great topic. Here’s what I know...`;
+    }
   };
 
   return (
     <div style={{ padding: '2rem' }}>
       <h2>💡 AI Tutor</h2>
-      <div style={{ border: '1px solid #ccc', padding: '1rem', minHeight: '300px', marginBottom: '1rem', backgroundColor: '#fafafa' }}>
+      <div style={{ border: '1px solid #ccc', padding: '1rem', height: '300px', overflowY: 'scroll', marginBottom: '1rem' }}>
         {messages.map((msg, i) => (
-          <div key={i} style={{ marginBottom: '0.5rem' }}>
-            <strong>{msg.sender === 'user' ? 'You' : 'Tutor'}:</strong> {msg.text}
+          <div key={i} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
+            <strong>{msg.sender === 'user' ? 'You' : 'OmniAI'}:</strong> {msg.text}
           </div>
         ))}
       </div>
-      <input
-        value={input}
-        onChange={e => setInput(e.target.value)}
-        onKeyDown={e => e.key === 'Enter' && handleSend()}
-        placeholder="Ask a question..."
-        style={{ width: '80%', padding: '0.5rem' }}
-      />
-      <button onClick={handleSend} style={{ padding: '0.5rem 1rem', marginLeft: '1rem' }}>
-        Send
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={input}
+          placeholder="Ask me anything..."
+          onChange={(e) => setInput(e.target.value)}
+          style={{ width: '80%', padding: '0.5rem' }}
+        />
+        <button type="submit" style={{ padding: '0.5rem 1rem' }}>Send</button>
+      </form>
     </div>
   );
 }

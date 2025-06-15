@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Payments from './components/Payments';
 import Progress from './components/Progress';
+import CEODashboard from './components/CEODashboard';
 
 function Home() {
   return <h2>🏠 Welcome to OmniLearn</h2>;
@@ -24,6 +25,7 @@ function App() {
         <Route path="/tutor" element={<Tutor />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/progress" element={<Progress />} />
+        <Route path="/ceo" element={<CEODashboard />} />
       </Routes>
     </Router>
   );
