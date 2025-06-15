@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 
 export default function Tutor() {
-  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([
+    { sender: 'ai', text: 'Hi! I’m your AI Tutor. Ask me anything to begin.' }
+  ]);
 
   const handleSend = () => {
     if (!input.trim()) return;
+    
+    setMessages(prev => [...prev, { sender: 'user', text: input }]);
 
-    const newMessages = [...messages, { sender: 'You', text: input }];
-    setMessages(newMessages);
-
-    // Simulated AI response
+    // Fake AI response for now
     setTimeout(() => {
-      const response = {
-        sender: 'OmniLearn AI',
-        text: `Let me help you with "${input}"... (Real AI coming soon!)`
-      };
-      setMessages([...newMessages, response]);
+      setMessages(prev => [
+        ...prev,
+        { sender: 'ai', text: `I'm working on it! (You asked: "${input}")` }
+      ]);
     }, 600);
 
     setInput('');
@@ -25,20 +25,23 @@ export default function Tutor() {
   return (
     <div style={{ padding: '2rem' }}>
       <h2>💡 AI Tutor</h2>
-      <div style={{ border: '1px solid #ccc', padding: '1rem', height: '200px', overflowY: 'auto', marginBottom: '1rem' }}>
+      <div style={{ border: '1px solid #ccc', padding: '1rem', minHeight: '300px', marginBottom: '1rem', backgroundColor: '#fafafa' }}>
         {messages.map((msg, i) => (
-          <p key={i}><strong>{msg.sender}:</strong> {msg.text}</p>
+          <div key={i} style={{ marginBottom: '0.5rem' }}>
+            <strong>{msg.sender === 'user' ? 'You' : 'Tutor'}:</strong> {msg.text}
+          </div>
         ))}
       </div>
       <input
-        type="text"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+        onChange={e => setInput(e.target.value)}
+        onKeyDown={e => e.key === 'Enter' && handleSend()}
         placeholder="Ask a question..."
-        style={{ width: '70%', padding: '0.5rem' }}
+        style={{ width: '80%', padding: '0.5rem' }}
       />
-      <button onClick={handleSend} style={{ marginLeft: '0.5rem', padding: '0.5rem 1rem' }}>Send</button>
+      <button onClick={handleSend} style={{ padding: '0.5rem 1rem', marginLeft: '1rem' }}>
+        Send
+      </button>
     </div>
   );
 }
