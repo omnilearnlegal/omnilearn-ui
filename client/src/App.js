@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Payments from './components/Payments';
 import Progress from './components/Progress';
 import CEODashboard from './components/CEODashboard';
+import ScoreTracker from './components/ScoreTracker';
+
 
 function Home() {
   return <h2>🏠 Welcome to OmniLearn</h2>;
@@ -24,8 +26,10 @@ function App() {
         <Route path="/study" element={<Study />} />
         <Route path="/tutor" element={<Tutor />} />
         <Route path="/payments" element={<Payments />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/ceo" element={<CEODashboard />} />
+        <Route path="/scores" element={<ScoreTracker />} />
       </Routes>
     </Router>
   );
