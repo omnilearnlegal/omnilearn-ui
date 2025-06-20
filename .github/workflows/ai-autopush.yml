@@ -1,0 +1,29 @@
+name: AI AutoPush Workflow
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Every 10 minutes
+  workflow_dispatch:
+
+jobs:
+  autopush:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🤖 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 🧠 AI Autopush: Proof Update
+        run: |
+          echo "✅ AI was here at $(date)" >> ai-proof.txt
+          git config --global user.name 'omnilearneditor'
+          git config --global user.email 'omnilearn.editor@proton.me'
+          git add ai-proof.txt
+          git commit -m "🤖 AI Autopush: Proof of life update"
+          git push
+
