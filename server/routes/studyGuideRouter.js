@@ -1,30 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-// ✨ Route to generate a study guide
-router.post('/api/study-guide', async (req, res) => {
-  const { topic } = req.body;
+// ✅ Study guide generator endpoint
+router.post('/generate-study-guide', (req, res) => {
+  const { subject, topics, difficulty } = req.body;
 
-  if (!topic) {
-    return res.status(400).json({ error: 'Missing topic in request.' });
+  if (!subject || !topics || !Array.isArray(topics)) {
+    return res.status(400).json({ error: 'Missing or invalid study guide parameters.' });
   }
 
-  try {
-    // Simulate AI response (replace with real AI logic)
-    const studyGuide = {
-      topic,
-      sections: [
-        { title: 'Overview', content: `This is an overview of ${topic}.` },
-        { title: 'Key Terms', content: 'List of important terms and definitions.' },
-        { title: 'Summary', content: 'This is a concise summary of the topic.' },
-      ],
-    };
+  const guide = {
+    title: `📘 Study Guide: ${subject}`,
+    difficulty: difficulty || 'Intermediate',
+    topics: topics.map((topic, index) => ({
+      id: index + 1,
+      title: topic,
+      content: `🧠 Key Concepts for ${topic}:\n- [Insert AI-generated notes here]`
+    }))
+  };
 
-    res.json({ guide: studyGuide });
-  } catch (error) {
-    console.error('❌ Error generating study guide:', error);
-    res.status(500).json({ error: 'Failed to generate study guide' });
-  }
+  res.json(guide);
 });
 
 module.exports = router;
