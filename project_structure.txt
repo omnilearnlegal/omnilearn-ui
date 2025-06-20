@@ -1,0 +1,34 @@
+.
+├── backend
+│   ├── ai_engine.py
+│   ├── app.py
+│   ├── content_handler.py
+│   ├── content_saver.py
+│   ├── database.py
+│   ├── db_operations.py
+│   ├── def save_content_to_file(content, filename):     with open(filename, 'w') as file:         file.write(content)     print
+│   ├── main.py
+│   ├── openai_integration.py
+│   ├── payments.py
+│   ├── populate_db.py
+│   ├── query_subjects.py
+│   ├── quiz_engine.py
+│   ├── requirements.txt
+│   ├── study_guide_engine.py.save
+│   ├── subjects.json
+│   ├── subjects_vocational_fields.db
+│   ├── test_db.py
+│   ├── test_env.py
+│   ├── test_lesson.py
+│   ├── test_main.py
+│   ├── venv
+│   └── verify_data.py
+├── frontend
+│   ├── App.js
+│   ├── index.js
+│   ├── package.json
+│   └── src
+├── project_structure.txt
+└── subjects_vocational_fields.db
+
+5 directories, 27 files
