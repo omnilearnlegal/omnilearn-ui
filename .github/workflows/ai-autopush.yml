@@ -1,42 +1,19 @@
-name: AI Autopush Workflow
+name: 🧠 AI Autopush Workflow
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'package.json'
-      - '.github/workflows/ai-autopush.yml'
+    branches: [main]
+  schedule:
+    - cron: '*/15 * * * *' # ⏱️ Every 15 minutes
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  autopush:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      actions: write
-
     steps:
-      - name: Checkout Code
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Project
-        run: npm run build
-
-      - name: Push Build to GitHub Pages (optional)
-        if: success()
-        run: echo "✅ Build completed successfully."
-
-      - name: Done
-        run: echo "🎉 AI Autopush success"
+      - name: Run AI HealthCheck
+        run: node .github/ai-health-check.js
 
