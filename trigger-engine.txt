@@ -1,0 +1,4 @@
+# OmniLearn Trigger Engine
+# Last check: leave this line untouched so AI can read timestamp
+last_trigger: now
+
